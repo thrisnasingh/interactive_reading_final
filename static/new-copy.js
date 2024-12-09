@@ -33,6 +33,7 @@ let citationsMap = new Map();
 // value: 1
 // citation: 
 let highlightsOn = false;
+let darkModeOn = false;
 
 // kinda like my main
 document.addEventListener('DOMContentLoaded', function () {
@@ -1299,7 +1300,7 @@ function createVisualPopup(visual, id) {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: ${darkModeOn ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.8)'};
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1308,7 +1309,8 @@ function createVisualPopup(visual, id) {
 
     const content = document.createElement('div');
     content.style.cssText = `
-        background: white;
+        background: ${darkModeOn ? '#2d2d2d' : 'white'};
+        color: ${darkModeOn ? 'white' : 'black'};
         padding: 20px;
         border-radius: 8px;
         max-width: 90vw;
@@ -1317,7 +1319,6 @@ function createVisualPopup(visual, id) {
         overflow-y: auto;
     `;
 
-    // Add close button
     const closeButton = document.createElement('button');
     closeButton.innerHTML = '×';
     closeButton.style.cssText = `
@@ -1336,11 +1337,8 @@ function createVisualPopup(visual, id) {
         align-items: center;
         justify-content: center;
         transition: background-color 0.2s;
+        color: ${darkModeOn ? '#fff' : '#666'};
     `;
-    
-    closeButton.onmouseover = () => closeButton.style.backgroundColor = '#eee';
-    closeButton.onmouseout = () => closeButton.style.backgroundColor = 'transparent';
-    closeButton.onclick = () => popup.remove();
 
     if (visual.type === 'figure') {
         content.innerHTML = `
@@ -1374,16 +1372,19 @@ function createVisualPopup(visual, id) {
         content.appendChild(caption);
     }
 
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(popup);
+    });
+
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            document.body.removeChild(popup);
+        }
+    });
+
     content.appendChild(closeButton);
     popup.appendChild(content);
     document.body.appendChild(popup);
-
-    // Close popup when clicking outside
-    popup.onclick = (e) => {
-        if (e.target === popup) {
-            popup.remove();
-        }
-    };
 }
 
 function createCitationsPanel() {
@@ -1452,9 +1453,15 @@ function createCitationsPanel() {
             ${citationText}
         `;
 
-        // Add hover effects
-        citationItem.onmouseover = () => citationItem.style.backgroundColor = '#f0f0f0';
-        citationItem.onmouseout = () => citationItem.style.backgroundColor = '#f8f8f8';
+        // // Add hover effects
+        // if (darkModeOn) {
+        //     citationItem.onmouseover = () => citationItem.style.backgroundColor = '#333333';
+        //     citationItem.onmouseout = () => citationItem.style.backgroundColor = '#2d2d2d';
+        // } else {
+        //     citationItem.onmouseover = () => citationItem.style.backgroundColor = '#f0f0f0';
+        //     citationItem.onmouseout = () => citationItem.style.backgroundColor = '#f8f8f8';
+        // }
+
 
         citationsList.appendChild(citationItem);
     });
@@ -1473,7 +1480,8 @@ function createCitationPopup(citation) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: white;
+        background: ${darkModeOn ? '#2d2d2d' : 'white'};
+        color: ${darkModeOn ? 'white' : 'black'};
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -1482,7 +1490,17 @@ function createCitationPopup(citation) {
         z-index: 1001;
     `;
 
-    // Create close button
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: ${darkModeOn ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.5)'};
+        z-index: 1000;
+    `;
+
     const closeButton = document.createElement('button');
     closeButton.innerHTML = '×';
     closeButton.style.cssText = `
@@ -1495,12 +1513,8 @@ function createCitationPopup(citation) {
         cursor: pointer;
         padding: 5px;
         line-height: 1;
-        color: #666;
+        color: ${darkModeOn ? '#fff' : '#666'};
     `;
-    closeButton.onclick = () => {
-        popup.remove();
-        overlay.remove();
-    };
 
     // Create citation content with clickable URLs
     const citationText = citation.citation.replace(
@@ -1514,23 +1528,16 @@ function createCitationPopup(citation) {
         ${citationText}
     `;
 
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 1000;
-    `;
-    overlay.onclick = (e) => {
-        if (e.target === overlay) {
-            popup.remove();
-            overlay.remove();
-        }
-    };
+    // Set up event listeners
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(popup);
+        document.body.removeChild(overlay);
+    });
+
+    overlay.addEventListener('click', () => {
+        document.body.removeChild(popup);
+        document.body.removeChild(overlay);
+    });
 
     popup.appendChild(closeButton);
     popup.appendChild(content);
@@ -1890,9 +1897,10 @@ function calculateCosineSimilarity(str1, str2) {
 // cool features to add?
 // Add dark mode toggle function
 function toggleDarkMode() {
+    darkModeOn = !darkModeOn;
     const isDarkMode = document.body.classList.toggle('dark-mode');
     
-    if (isDarkMode) {
+    if (darkModeOn) {
         // Dark mode styles
         document.documentElement.style.setProperty('--bg-color', '#1a1a1a');
         document.documentElement.style.setProperty('--text-color', '#ffffff');
@@ -1907,80 +1915,4 @@ function toggleDarkMode() {
         document.documentElement.style.setProperty('--hover-color', '#e0e0e0');
         document.documentElement.style.setProperty('--border-color', '#ddd');
     }
-}
-
-// might potential update Highlights function to use an OpenAI API call to match sentences
-async function updateHighlights() {
-    console.log('Starting updatedToggleHighlights');
-
-    // Get current section and paragraph
-    const section = contentMap.get(`section_${currentSectionIndex}`);
-    if (!section) {
-        console.log('No section found for index:', currentSectionIndex);
-        return;
-    }
-
-    const currentParagraph = section.paragraphs[currentParagraphIndex];
-    if (!currentParagraph) {
-        console.log('No paragraph found for index:', currentParagraphIndex);
-        return;
-    }
-
-    // Get associated visual if it exists
-    const visualId = currentParagraph.associated_visual;
-    if (!visualId || !visualElementsMap.has(visualId)) {
-        console.log('No associated visual found for paragraph');
-        return;
-    }
-
-    const visual = visualElementsMap.get(visualId);
-    
-    // Extract sentences from paragraph and caption
-    let paragraphSentences = currentParagraph.sentences.map((sentence, index) => ({
-        text: sentence.text.trim(),
-        sentIndex: index
-    }));
-
-    let captionSentences = [];
-    if (visual) {
-        captionSentences = visual.caption.full_text.match(/[^.!?]+[.!?]+/g) || [];
-        captionSentences = captionSentences.map((sentence, index) => ({
-            text: sentence.trim(),
-            capIndex: index
-        }));
-    }
-
-    console.log('Extracted paragraph sentences:', paragraphSentences);
-    console.log('Extracted caption sentences:', captionSentences);
-
-    // OpenAI API call
-    try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer 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` // You'll need to handle API key access
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{
-                    role: "system",
-                    content: `Given two lists of sentences, match paragraph sentences with similar caption sentences. 
-                             Each paragraph sentence should match with at most one caption sentence, but caption sentences can match multiple paragraph sentences.
-                             If there are no matches, return an empty array.
-                             Return only a JSON array of matches, where each match has a 'paragraph' and 'caption' property containing the indices.`
-                }, {
-                    role: "user",
-                    content: `Paragraph sentences: ${JSON.stringify(paragraphSentences.map(s => s.text))}
-                             Caption sentences: ${JSON.stringify(captionSentences.map(s => s.text))}`
-                }],
-                temperature: 0.3
-            })
-        });
-
-        const data = await response.json();
-        const matches = JSON.parse(data.choices[0].message.content);
-} catch (error) {
-    console.error('Error during OpenAI API call:', error);
-}
 }
