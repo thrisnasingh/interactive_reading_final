@@ -660,9 +660,33 @@ function renderSection(sectionKey, paragraphIndex = 0) {
             const visualData = visualElementsMap.get(currentParagraph.associated_visual);
             const visualCaption = visualData.caption.full_text;
             const visualPath = visualData.path.split('/').pop();
-            console.log("visualPath", visualPath);
+            
             if (visualData) {
-                contentHTML += `<div class="visual-panel" style="width: 500px; padding: 20px;">`;
+                contentHTML += `
+                    <div class="visual-panel" style="width: 500px; padding: 20px; position: relative;">
+                        <button class="expand-visual-btn" style="
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            border: none;
+                            background-color: ${darkModeOn ? '#444' : '#fff'};
+                            cursor: pointer;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 2;
+                            transition: background-color 0.2s;
+                            padding: 6px;
+                        ">
+                            <img src="/static/images/glass.png" 
+                                 style="width: 18px; height: 18px; 
+                                        filter: ${darkModeOn ? 'invert(1)' : 'none'};"
+                                 alt="Expand">
+                        </button>`;
                 
                 if (visualData.type === 'figure') {
                     contentHTML += `
@@ -765,6 +789,20 @@ function renderSection(sectionKey, paragraphIndex = 0) {
 
         // Reattach other event listeners
         attachEventListeners(paragraphElement);
+
+        // After the content is added to DOM, attach only the click event listener
+        const expandButtons = sectionDiv.querySelectorAll('.expand-visual-btn');
+        expandButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentParagraph.associated_visual) {
+                    const visualData = visualElementsMap.get(currentParagraph.associated_visual);
+                    if (visualData) {
+                        createVisualPopup(visualData, currentParagraph.associated_visual);
+                    }
+                }
+            });
+        });
     }
 
     // Add event listeners for citation links after rendering
@@ -1794,7 +1832,7 @@ function toggleHighlights() {
         if (highlightsFound) {
             lightbulbBtn.style.backgroundColor = '#ffd700'; // Golden yellow when highlights found
         } else {
-            lightbulbBtn.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.5)'; // Just the glow when no highlights
+            lightbulbBtn.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.5)'; // Just the glow when no highlights found
             lightbulbBtn.style.backgroundColor = 'white';
         }
     } else {
