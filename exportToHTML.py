@@ -6,7 +6,6 @@ import requests
 from urllib.parse import urljoin, urlparse
 import re
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
 def download_resource(url, save_dir):
     try:
@@ -47,9 +46,15 @@ def save_webpage_to_html(url, output_dir):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     
+    # Use system ChromeDriver directly
+
+    service = Service('/Users/thrisna/IdeaProjects/interactive_reading/interactive_reading_final/chromedriver')  #Linux/Mac
+    # # or
+    # service = Service(r'C:\path\to\your\chromedriver.exe')  # Windows
+    
     # Start WebDriver
     driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
+        service=service,
         options=chrome_options
     )
 
