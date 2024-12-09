@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import os
 import subprocess
 import json
-import deprecated.cleanJSON as cleanJSON
 
 app = Flask(__name__)
 
@@ -36,7 +35,6 @@ def content():
     try:
         with open('static/content.json', 'r') as f:
             raw_data = json.load(f)
-            organized_data = cleanJSON.parse_and_organize_json(raw_data)
         return jsonify(raw_data), 200
     except FileNotFoundError:
         return jsonify({'error': 'content.json not found'}), 404

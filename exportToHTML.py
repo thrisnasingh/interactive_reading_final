@@ -5,6 +5,8 @@ import os
 import requests
 from urllib.parse import urljoin, urlparse
 import re
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 def download_resource(url, save_dir):
     try:
@@ -46,7 +48,10 @@ def save_webpage_to_html(url, output_dir):
     chrome_options.add_argument('--headless')
     
     # Start WebDriver
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=chrome_options
+    )
 
     # Delete existing JPG files before saving new ones
     static_images_dir = os.path.join('static', 'images')
