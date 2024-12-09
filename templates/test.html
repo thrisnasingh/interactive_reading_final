@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Title section */
+        #title-section {
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: lightgrey;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        .section-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .paragraph {
+            margin-bottom: 20px;
+        }
+
+        .text-panel, .visual-panel {
+            display: inline-block;
+            vertical-align: top;
+            width: 48%;
+        }
+
+        .visual-element {
+            display: none;
+        }
+
+        .visual-element.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Section -->
+    <!-- <div id="title-section">
+        <h1>Paper Title</h1>
+        <p>Authors: John Doe, Jane Smith</p>
+        <p>Keywords: Example, Research, Journal</p>
+    </div> -->
+
+    <!-- Content Section -->
+    <div id="content-section">
+        <!-- Sections will be dynamically inserted here -->
+    </div>
+
+    <script src="../static/new-copy.js"></script>  <!-- External JS -->
+</body>
+</html>

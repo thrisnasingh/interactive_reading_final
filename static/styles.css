@@ -1,0 +1,129 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: rgba(0, 0, 0, 1);
+    --panel-bg: #f5f5f5;
+    --hover-color: #f0f0f0;
+    --border-color: #ddd;
+    --button-bg: #ffffff;
+    --link-color: #0066cc;
+}
+
+/* Dark mode specific styles */
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: rgba(255, 255, 255, 0.87);
+    --panel-bg: #2d2d2d;
+    --hover-color: #3d3d3d;
+    --border-color: #404040;
+    --button-bg: #2d2d2d;
+    --link-color: #6ea8fe;
+}
+
+/* Add transition for smooth color changes */
+body, nav, button, .section, #citations-panel, #diagrams-panel {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Update nav panel styles */
+nav {
+    background-color: var(--panel-bg);
+}
+
+nav button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+}
+
+nav button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Update sections panel styles */
+#sections-panel {
+    background-color: var(--panel-bg) !important;
+    color: var(--text-color) !important;
+    transition: left 0.3s ease, background-color 0.3s;
+}
+
+#sections-panel button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+}
+
+#sections-panel button:hover {
+    background-color: var(--hover-color);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Update existing panel styles */
+nav {
+    background-color: var(--panel-bg) !important;
+}
+
+.section {
+    background-color: var(--bg-color);
+}
+
+/* Update other elements */
+#citations-panel, #diagrams-panel {
+    background-color: var(--panel-bg);
+}
+
+table td {
+    border-color: var(--border-color) !important;
+}
+
+.citation-link {
+    color: #6ea8fe !important; /* Lighter blue for dark mode */
+}
+
+/* Dark mode specific styles */
+.dark-mode .visual-element, 
+.dark-mode .citation-item {
+    background-color: var(--panel-bg);
+}
+
+.dark-mode a {
+    color: #6ea8fe;
+}
+
+/* Popup styles */
+.popup-overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup-content {
+    background-color: var(--panel-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color);
+}
+
+/* Add transition for smooth color changes */
+.popup-content {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Links in popups */
+.popup a {
+    color: var(--link-color);
+}
+
+/* Table styles in popups */
+.popup table {
+    border-color: var(--border-color);
+}
+
+.popup td, .popup th {
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* Add transitions for smooth color changes */
+#sections-panel,
+#sections-panel button {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}

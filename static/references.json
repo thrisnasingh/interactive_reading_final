@@ -1,0 +1,368 @@
+[
+    {
+        "id": "BibPLXBIB0001",
+        "label": "[1]",
+        "value": "1",
+        "citation": "2023. Figma: The Collaborative Interface Design Tool. https://www.figma.com/"
+    },
+    {
+        "id": "BibPLXBIB0002",
+        "label": "[2]",
+        "value": "2",
+        "citation": "Rukshan Alexander, David Murray, and Nik Thompson. 2017. Cross-Cultural Web Design Guidelines. In Proceedings of the 14th International Web for All Conference (Perth, Western Australia, Australia) (W4A \u201917). Association for Computing Machinery, New York, NY, USA, Article 10, 4 pages. https://doi.org/10.1145/3058555.3058574"
+    },
+    {
+        "id": "BibPLXBIB0003",
+        "label": "[3]",
+        "value": "3",
+        "citation": "Ali Borji and Mehrdad Mohammadian. 2023. Battle of the Wordsmiths: Comparing ChatGPT, GPT-4, Claude, and Bard. https://doi.org/10.2139/ssrn.4476855"
+    },
+    {
+        "id": "BibPLXBIB0004",
+        "label": "[4]",
+        "value": "4",
+        "citation": "Virginia Braun and Victoria Clarke. 2006. Using thematic analysis in psychology. Qualitative Research in Psychology 3 (01 2006), 77\u2013101. https://doi.org/10.1191/1478088706qp063oa"
+    },
+    {
+        "id": "BibPLXBIB0005",
+        "label": "[5]",
+        "value": "5",
+        "citation": "Lukas Br\u00fcckner, Luis A. Leiva, and Antti Oulasvirta. 2022. Learning GUI Completions with User-Defined Constraints. ACM Transactions on Interactive Intelligent Systems (TiiS) 12, 1, Article 6 (mar 2022), 40 pages. https://doi.org/10.1145/3490034"
+    },
+    {
+        "id": "BibPLXBIB0006",
+        "label": "[6]",
+        "value": "6",
+        "citation": "Chun-Fu (Richard) Chen, Marco Pistoia, Conglei Shi, Paolo Girolami, Joseph W. Ligman, and Yong Wang. 2017. UI X-Ray: Interactive Mobile UI Testing Based on Computer Vision(IUI \u201917). Association for Computing Machinery, New York, NY, USA, 245\u2013255. https://doi.org/10.1145/3025171.3025190"
+    },
+    {
+        "id": "BibPLXBIB0007",
+        "label": "[7]",
+        "value": "7",
+        "citation": "Chin-Yi Cheng, Forrest Huang, Gang Li, and Yang Li. 2023. PLay: Parametrically Conditioned Layout Generation using Latent Diffusion. arxiv:2301.11529 [cs.LG]"
+    },
+    {
+        "id": "BibPLXBIB0008",
+        "label": "[8]",
+        "value": "8",
+        "citation": "Ruijia Cheng, Ziwen Zeng, Maysnow Liu, and Steve W. Dow. 2020. Critique Me. Proceedings of the ACM on Human-Computer Interaction 4 (2020), 1\u201324. https://api.semanticscholar.org/CorpusID:224804650"
+    },
+    {
+        "id": "BibPLXBIB0009",
+        "label": "[9]",
+        "value": "9",
+        "citation": "Andr\u00e9 de Lima Salgado, Sandra Souza Rodrigues, and Renata Pontin M. Fortes. 2016. Evolving Heuristic Evaluation for Multiple Contexts and Audiences: Perspectives from a Mapping Study. In Proceedings of the 34th ACM International Conference on the Design of Communication (Silver Spring, MD, USA) (SIGDOC \u201916). Association for Computing Machinery, New York, NY, USA, Article 19, 8 pages. https://doi.org/10.1145/2987592.2987617"
+    },
+    {
+        "id": "BibPLXBIB0010",
+        "label": "[10]",
+        "value": "10",
+        "citation": "Peitong Duan, Bj\u00f6rn Hartmann, Karina Nguyen, Yang Li, Marti Hearst, and Meredith Ringel Morris. 2023. Towards Semantically-Aware UI Design Tools: Design, Implementation and Evaluation of Semantic Grouping Guidelines. In ICML 2023 Workshop on Artificial Intelligence and Human-Computer Interaction. https://research.google/pubs/pub52594/"
+    },
+    {
+        "id": "BibPLXBIB0011",
+        "label": "[11]",
+        "value": "11",
+        "citation": "Peitong Duan, Casimir Wierzynski, and Lama Nachman. 2020. Optimizing User Interface Layouts via Gradient Descent. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (Honolulu, HI, USA) (CHI \u201920). Association for Computing Machinery, New York, NY, USA, 1\u201312. https://doi.org/10.1145/3313831.3376589"
+    },
+    {
+        "id": "BibPLXBIB0012",
+        "label": "[12]",
+        "value": "12",
+        "citation": "Frank Elavsky, Cynthia Bennett, and Dominik Moritz. 2022. How accessible is my visualization? Evaluating visualization accessibility with Chartability. In Computer Graphics Forum, Vol. 41. Wiley Online Library, 57\u201370."
+    },
+    {
+        "id": "BibPLXBIB0013",
+        "label": "[13]",
+        "value": "13",
+        "citation": "J.L. Fleiss et al. 1971. Measuring nominal scale agreement among many raters. Psychological Bulletin 76, 5 (1971), 378\u2013382."
+    },
+    {
+        "id": "BibPLXBIB0014",
+        "label": "[14]",
+        "value": "14",
+        "citation": "Camilo Fosco, Vincent Casser, Amish Kumar Bedi, Peter O'Donovan, Aaron Hertzmann, and Zoya Bylinskii. 2020. Predicting Visual Importance Across Graphic Design Types. In Proceedings of the 33rd Annual ACM Symposium on User Interface Software and Technology (Virtual Event, USA) (UIST \u201920). Association for Computing Machinery, New York, NY, USA, 249\u2013260. https://doi.org/10.1145/3379337.3415825"
+    },
+    {
+        "id": "BibPLXBIB0015",
+        "label": "[15]",
+        "value": "15",
+        "citation": "C. Ailie Fraser, Tricia J. Ngoon, Ariel S. Weingarten, Mira Dontcheva, and Scott Klemmer. 2017. CritiqueKit: A Mixed-Initiative, Real-Time Interface For Improving Feedback. In Adjunct Proceedings of the 30th Annual ACM Symposium on User Interface Software and Technology (Qu\u00e9bec City, QC, Canada) (UIST \u201917 Adjunct). Association for Computing Machinery, New York, NY, USA, 7\u20139. https://doi.org/10.1145/3131785.3131791"
+    },
+    {
+        "id": "BibPLXBIB0016",
+        "label": "[16]",
+        "value": "16",
+        "citation": "Barney G. Glaser and Anselm L. Strauss. 1967. The Discovery of Grounded Theory: Strategies for Qualitative Research. Aldine de Gruyter, New York, NY."
+    },
+    {
+        "id": "BibPLXBIB0017",
+        "label": "[17]",
+        "value": "17",
+        "citation": "Jenna L. Gorlewicz, Jennifer L. Tennison, P. Merlin Uesbeck, Margaret E. Richard, Hari P. Palani, Andreas Stefik, Derrick W. Smith, and Nicholas A. Giudice. 2020. Design Guidelines and Recommendations for Multimodal, Touchscreen-Based Graphics. ACM Trans. Access. Comput. 13, 3, Article 10 (aug 2020), 30 pages. https://doi.org/10.1145/3403933"
+    },
+    {
+        "id": "BibPLXBIB0018",
+        "label": "[18]",
+        "value": "18",
+        "citation": "Perttu H\u00e4m\u00e4l\u00e4inen, Mikke Tavast, and Anton Kunnari. 2023. Evaluating Large Language Models in Generating Synthetic HCI Research Data: A Case Study. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (Hamburg, Germany) (CHI \u201923). Association for Computing Machinery, New York, NY, USA, Article 433, 19 pages. https://doi.org/10.1145/3544548.3580688"
+    },
+    {
+        "id": "BibPLXBIB0019",
+        "label": "[19]",
+        "value": "19",
+        "citation": "Tae Soo Kim, DaEun Choi, Yoonseo Choi, and Juho Kim. 2022. Stylette: Styling the Web with Natural Language. In Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems (New Orleans, LA, USA) (CHI \u201922). Association for Computing Machinery, New York, NY, USA, Article 5, 17 pages. https://doi.org/10.1145/3491102.3501931"
+    },
+    {
+        "id": "BibPLXBIB0020",
+        "label": "[20]",
+        "value": "20",
+        "citation": "Chinmay E. Kulkarni, Michael S. Bernstein, and Scott R. Klemmer. 2015. PeerStudio: Rapid Peer Feedback Emphasizes Revision and Improves Performance. In Proceedings of the Second (2015) ACM Conference on Learning @ Scale (Vancouver, BC, Canada) (L@S \u201915). Association for Computing Machinery, New York, NY, USA, 75\u201384. https://doi.org/10.1145/2724660.2724670"
+    },
+    {
+        "id": "BibPLXBIB0021",
+        "label": "[21]",
+        "value": "21",
+        "citation": "Sri Kurniawan and Panayiotis Zaphiris. 2005. Research-Derived Web Design Guidelines for Older People. In Proceedings of the 7th International ACM SIGACCESS Conference on Computers and Accessibility (Baltimore, MD, USA) (Assets \u201905). Association for Computing Machinery, New York, NY, USA, 129\u2013135. https://doi.org/10.1145/1090785.1090810"
+    },
+    {
+        "id": "BibPLXBIB0022",
+        "label": "[22]",
+        "value": "22",
+        "citation": "Tomas Lawton, Kazjon Grace, and Francisco J Ibarrola. 2023. When is a Tool a Tool? User Perceptions of System Agency in Human\u2013AI Co-Creative Drawing. In Proceedings of the 2023 ACM Designing Interactive Systems Conference (Pittsburgh, PA, USA) (DIS \u201923). Association for Computing Machinery, New York, NY, USA, 1978\u20131996. https://doi.org/10.1145/3563657.3595977"
+    },
+    {
+        "id": "BibPLXBIB0023",
+        "label": "[23]",
+        "value": "23",
+        "citation": "Chunggi Lee, Sanghoon Kim, Dongyun Han, Hongjun Yang, Young-Woo Park, Bum Chul Kwon, and Sungahn Ko. 2020. GUIComp: A GUI Design Assistant with Real-Time, Multi-Faceted Feedback. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (Honolulu, HI, USA) (CHI \u201920). Association for Computing Machinery, New York, NY, USA, 1\u201313. https://doi.org/10.1145/3313831.3376327"
+    },
+    {
+        "id": "BibPLXBIB0024",
+        "label": "[24]",
+        "value": "24",
+        "citation": "Peter Lee, Sebastien Bubeck, and Joseph Petro. 2023. Benefits, limits, and risks of GPT-4 as an AI chatbot for medicine. New England Journal of Medicine 388, 13 (2023), 1233\u20131239."
+    },
+    {
+        "id": "BibPLXBIB0025",
+        "label": "[25]",
+        "value": "25",
+        "citation": "Chen Ling and Gavriel Salvendy. 2009. Effect of evaluators\u2019 cognitive style on heuristic evaluation: Field dependent and field independent evaluators. International Journal of Human-Computer Studies 67, 4 (2009), 382\u2013393. https://doi.org/10.1016/j.ijhcs.2008.11.002"
+    },
+    {
+        "id": "BibPLXBIB0026",
+        "label": "[26]",
+        "value": "26",
+        "citation": "Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae Lee. 2023. Visual Instruction Tuning. arxiv:2304.08485 [cs.CV]"
+    },
+    {
+        "id": "BibPLXBIB0027",
+        "label": "[27]",
+        "value": "27",
+        "citation": "Zhe Liu, Chunyang Chen, Junjie Wang, Mengzhuo Chen, Boyu Wu, Xing Che, Dandan Wang, and Qing Wang. 2023. Chatting with GPT-3 for Zero-Shot Human-Like Mobile Automated GUI Testing. arxiv:2305.09434 [cs.SE]"
+    },
+    {
+        "id": "BibPLXBIB0028",
+        "label": "[28]",
+        "value": "28",
+        "citation": "Kevin Lu, Aditya Grover, Pieter Abbeel, and Igor Mordatch. 2022. Frozen Pretrained Transformers as Universal Computation Engines. Proceedings of the AAAI Conference on Artificial Intelligence 36, 7 (Jun. 2022), 7628\u20137636. https://doi.org/10.1609/aaai.v36i7.20729"
+    },
+    {
+        "id": "BibPLXBIB0029",
+        "label": "[29]",
+        "value": "29",
+        "citation": "Kurt Luther, Amy Pavel, Wei Wu, Jari-lee Tolentino, Maneesh Agrawala, Bj\u00f6rn Hartmann, and Steven P. Dow. 2014. CrowdCrit: Crowdsourcing and Aggregating Visual Design Critique. In Proceedings of the Companion Publication of the 17th ACM Conference on Computer Supported Cooperative Work & Social Computing (Baltimore, Maryland, USA) (CSCW Companion \u201914). Association for Computing Machinery, New York, NY, USA, 21\u201324. https://doi.org/10.1145/2556420.2556788"
+    },
+    {
+        "id": "BibPLXBIB0030",
+        "label": "[30]",
+        "value": "30",
+        "citation": "Kurt Luther, Jari-Lee Tolentino, Wei Wu, Amy Pavel, Brian P. Bailey, Maneesh Agrawala, Bj\u00f6rn Hartmann, and Steven P. Dow. 2015. Structuring, Aggregating, and Evaluating Crowdsourced Design Critique. In Proceedings of the 18th ACM Conference on Computer Supported Cooperative Work & Social Computing (Vancouver, BC, Canada) (CSCW \u201915). Association for Computing Machinery, New York, NY, USA, 473\u2013485. https://doi.org/10.1145/2675133.2675283"
+    },
+    {
+        "id": "BibPLXBIB0031",
+        "label": "[31]",
+        "value": "31",
+        "citation": "Jennifer Mankoff, Anind K. Dey, Gary Hsieh, Julie Kientz, Scott Lederer, and Morgan Ames. 2003. Heuristic Evaluation of Ambient Displays. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (Ft. Lauderdale, Florida, USA) (CHI \u201903). Association for Computing Machinery, New York, NY, USA, 169\u2013176. https://doi.org/10.1145/642611.642642"
+    },
+    {
+        "id": "BibPLXBIB0032",
+        "label": "[32]",
+        "value": "32",
+        "citation": "Andrii Matviienko, Maria Rauschenberger, Vanessa Cobus, Janko Timmermann, Heiko M\u00fcller, Jutta Fortmann, Andreas L\u00f6cken, Christoph Trappe, Wilko Heuten, and Susanne Boll. 2015. Deriving Design Guidelines for Ambient Light Systems. In Proceedings of the 14th International Conference on Mobile and Ubiquitous Multimedia (Linz, Austria) (MUM \u201915). Association for Computing Machinery, New York, NY, USA, 267\u2013277. https://doi.org/10.1145/2836041.2836069"
+    },
+    {
+        "id": "BibPLXBIB0033",
+        "label": "[33]",
+        "value": "33",
+        "citation": "Na Mi, Lora Anne Cavuoto, Kenneth Benson, Tonya L. Smith-Jackson, and Maury A. Nussbaum. 2014. A heuristic checklist for an accessible smartphone interface design. Universal Access in the Information Society 13 (2014), 351\u2013365. https://api.semanticscholar.org/CorpusID:16948811"
+    },
+    {
+        "id": "BibPLXBIB0034",
+        "label": "[34]",
+        "value": "34",
+        "citation": "Aliaksei Miniukovich, Antonella De Angeli, Simone Sulpizio, and Paola Venuti. 2017. Design Guidelines for Web Readability. In Proceedings of the 2017 Conference on Designing Interactive Systems (Edinburgh, United Kingdom) (DIS \u201917). Association for Computing Machinery, New York, NY, USA, 285\u2013296. https://doi.org/10.1145/3064663.3064711"
+    },
+    {
+        "id": "BibPLXBIB0035",
+        "label": "[35]",
+        "value": "35",
+        "citation": "Christine Murad, Cosmin Munteanu, Leigh Clark, and Benjamin R. Cowan. 2018. Design Guidelines for Hands-Free Speech Interaction. In Proceedings of the 20th International Conference on Human-Computer Interaction with Mobile Devices and Services Adjunct (Barcelona, Spain) (MobileHCI \u201918). Association for Computing Machinery, New York, NY, USA, 269\u2013276. https://doi.org/10.1145/3236112.3236149"
+    },
+    {
+        "id": "BibPLXBIB0036",
+        "label": "[36]",
+        "value": "36",
+        "citation": "Tricia J. Ngoon, C. Ailie Fraser, Ariel S. Weingarten, Mira Dontcheva, and Scott Klemmer. 2018. Interactive Guidance Techniques for Improving Creative Feedback. In Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems (Montreal QC, Canada) (CHI \u201918). Association for Computing Machinery, New York, NY, USA, 1\u201311. https://doi.org/10.1145/3173574.3173629"
+    },
+    {
+        "id": "BibPLXBIB0037",
+        "label": "[37]",
+        "value": "37",
+        "citation": "Tricia J. Ngoon, Joy O Kim, and Scott Klemmer. 2021. Sh\u00f6wn: Adaptive Conceptual Guidance Aids Example Use in Creative Tasks. In Proceedings of the 2021 ACM Designing Interactive Systems Conference (Virtual Event, USA) (DIS \u201921). Association for Computing Machinery, New York, NY, USA, 1834\u20131845. https://doi.org/10.1145/3461778.3462072"
+    },
+    {
+        "id": "BibPLXBIB0038",
+        "label": "[38]",
+        "value": "38",
+        "citation": "Jakob Nielsen. 1992. Finding Usability Problems through Heuristic Evaluation. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (Monterey, California, USA) (CHI \u201992). Association for Computing Machinery, New York, NY, USA, 373\u2013380. https://doi.org/10.1145/142750.142834"
+    },
+    {
+        "id": "BibPLXBIB0039",
+        "label": "[39]",
+        "value": "39",
+        "citation": "Jakob Nielsen. 1994. 10 Usability Heuristics for User Interface Design. https://www.nngroup.com/articles/ten-usability-heuristics/"
+    },
+    {
+        "id": "BibPLXBIB0040",
+        "label": "[40]",
+        "value": "40",
+        "citation": "Jakob Nielsen and Rolf Molich. 1990. Heuristic Evaluation of User Interfaces. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (Seattle, Washington, USA) (CHI \u201990). Association for Computing Machinery, New York, NY, USA, 249\u2013256. https://doi.org/10.1145/97243.97281"
+    },
+    {
+        "id": "BibPLXBIB0041",
+        "label": "[41]",
+        "value": "41",
+        "citation": "Jasper O'Leary, Holger Winnem\u00f6ller, Wilmot Li, Mira Dontcheva, and Morgan Dixon. 2018. Charrette: Supporting In-Person Discussions around Iterations in User Interface Design. In Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems (Montreal QC, Canada) (CHI \u201918). Association for Computing Machinery, New York, NY, USA, 1\u201311. https://doi.org/10.1145/3173574.3174109"
+    },
+    {
+        "id": "BibPLXBIB0042",
+        "label": "[42]",
+        "value": "42",
+        "citation": "OpenAI. 2023. GPT-4 Technical Report. arxiv:2303.08774 [cs.CL]"
+    },
+    {
+        "id": "BibPLXBIB0043",
+        "label": "[43]",
+        "value": "43",
+        "citation": "Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai, Meredith Ringel Morris, Percy Liang, and Michael S. Bernstein. 2023. Generative Agents: Interactive Simulacra of Human Behavior. arxiv:2304.03442 [cs.HC]"
+    },
+    {
+        "id": "BibPLXBIB0044",
+        "label": "[44]",
+        "value": "44",
+        "citation": "Joon Sung Park, Lindsay Popowski, Carrie Cai, Meredith Ringel Morris, Percy Liang, and Michael S. Bernstein. 2022. Social Simulacra: Creating Populated Prototypes for Social Computing Systems. In Proceedings of the 35th Annual ACM Symposium on User Interface Software and Technology (Bend, OR, USA) (UIST \u201922). Association for Computing Machinery, New York, NY, USA, Article 74, 18 pages. https://doi.org/10.1145/3526113.3545616"
+    },
+    {
+        "id": "BibPLXBIB0045",
+        "label": "[45]",
+        "value": "45",
+        "citation": "Amy Pavel, Dan B. Goldman, Bj\u00f6rn Hartmann, and Maneesh Agrawala. 2016. VidCrit: Video-Based Asynchronous Video Review. In Proceedings of the 29th Annual Symposium on User Interface Software and Technology (Tokyo, Japan) (UIST \u201916). Association for Computing Machinery, New York, NY, USA, 517\u2013528. https://doi.org/10.1145/2984511.2984552"
+    },
+    {
+        "id": "BibPLXBIB0046",
+        "label": "[46]",
+        "value": "46",
+        "citation": "Savvas Petridis, Michael Terry, and Carrie Jun Cai. 2023. PromptInfuser: Bringing User Interface Mock-Ups to Life with Large Language Models. In Extended Abstracts of the 2023 CHI Conference on Human Factors in Computing Systems (Hamburg, Germany) (CHI EA \u201923). Association for Computing Machinery, New York, NY, USA, Article 237, 6 pages. https://doi.org/10.1145/3544549.3585628"
+    },
+    {
+        "id": "BibPLXBIB0047",
+        "label": "[47]",
+        "value": "47",
+        "citation": "David Pinelle, Nelson Wong, and Tadeusz Stach. 2008. Heuristic Evaluation for Games: Usability Principles for Video Game Design. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (Florence, Italy) (CHI \u201908). Association for Computing Machinery, New York, NY, USA, 1453\u20131462. https://doi.org/10.1145/1357054.1357282"
+    },
+    {
+        "id": "BibPLXBIB0048",
+        "label": "[48]",
+        "value": "48",
+        "citation": "D Royce Sadler. 1989. Formative assessment and the design of instructional systems. Instructional science 18 (1989), 119\u2013144."
+    },
+    {
+        "id": "BibPLXBIB0049",
+        "label": "[49]",
+        "value": "49",
+        "citation": "Victor Sanh, Albert Webson, Colin Raffel, Stephen Bach, Lintang Sutawika, Zaid Alyafeai, Antoine Chaffin, Arnaud Stiegler, Arun Raja, Manan Dey, M Saiful Bari, Canwen Xu, Urmish Thakker, Shanya Sharma Sharma, Eliza Szczechla, Taewoon Kim, Gunjan Chhablani, Nihal Nayak, Debajyoti Datta, Jonathan Chang, Mike Tian-Jian Jiang, Han Wang, Matteo Manica, Sheng Shen, Zheng Xin Yong, Harshit Pandey, Rachel Bawden, Thomas Wang, Trishala Neeraj, Jos Rozen, Abheesht Sharma, Andrea Santilli, Thibault Fevry, Jason Alan Fries, Ryan Teehan, Teven Le Scao, Stella Biderman, Leo Gao, Thomas Wolf, and Alexander M Rush. 2022. Multitask Prompted Training Enables Zero-Shot Task Generalization. In The Tenth International Conference on Learning Representations, ICLR 2022, Virtual Event, April 25-29, 2022. https://openreview.net/forum?id=9Vrb9D0WI4"
+    },
+    {
+        "id": "BibPLXBIB0050",
+        "label": "[50]",
+        "value": "50",
+        "citation": "Eldon Schoop, Xin Zhou, Gang Li, Zhourong Chen, Bjoern Hartmann, and Yang Li. 2022. Predicting and Explaining Mobile UI Tappability with Vision Modeling and Saliency Analysis. In Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems (New Orleans, LA, USA) (CHI \u201922). Association for Computing Machinery, New York, NY, USA, Article 36, 21 pages. https://doi.org/10.1145/3491102.3517497"
+    },
+    {
+        "id": "BibPLXBIB0051",
+        "label": "[51]",
+        "value": "51",
+        "citation": "Noah Shinn, Federico Cassano, Beck Labash, Ashwin Gopinath, Karthik Narasimhan, and Shunyu Yao. 2023. Reflexion: Language Agents with Verbal Reinforcement Learning. arxiv:2303.11366 [cs.AI]"
+    },
+    {
+        "id": "BibPLXBIB0052",
+        "label": "[52]",
+        "value": "52",
+        "citation": "Amanda Swearngin and Yang Li. 2019. Modeling Mobile Interface Tappability Using Crowdsourcing and Deep Learning. In Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems (Glasgow, Scotland Uk) (CHI \u201919). Association for Computing Machinery, New York, NY, USA, 1\u201311. https://doi.org/10.1145/3290605.3300305"
+    },
+    {
+        "id": "BibPLXBIB0053",
+        "label": "[53]",
+        "value": "53",
+        "citation": "Amanda Swearngin, Chenglong Wang, Alannah Oleson, James Fogarty, and Amy J. Ko. 2020. Scout: Rapid Exploration of Interface Layout Alternatives through High-Level Design Constraints. Association for Computing Machinery, New York, NY, USA, 1\u201313. https://doi.org/10.1145/3313831.3376593"
+    },
+    {
+        "id": "BibPLXBIB0054",
+        "label": "[54]",
+        "value": "54",
+        "citation": "Kashyap Todi, Daryl Weir, and Antti Oulasvirta. 2016. Sketchplore: Sketch and Explore with a Layout Optimiser. In Proceedings of the 2016 ACM Conference on Designing Interactive Systems (Brisbane, QLD, Australia) (DIS \u201916). Association for Computing Machinery, New York, NY, USA, 543\u2013555. https://doi.org/10.1145/2901790.2901817"
+    },
+    {
+        "id": "BibPLXBIB0055",
+        "label": "[55]",
+        "value": "55",
+        "citation": "Norman G. Vinson. 1999. Design Guidelines for Landmarks to Support Navigation in Virtual Environments. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (Pittsburgh, Pennsylvania, USA) (CHI \u201999). Association for Computing Machinery, New York, NY, USA, 278\u2013285. https://doi.org/10.1145/302979.303062"
+    },
+    {
+        "id": "BibPLXBIB0056",
+        "label": "[56]",
+        "value": "56",
+        "citation": "Bryan Wang, Gang Li, and Yang Li. 2023. Enabling Conversational Interaction with Mobile UI Using Large Language Models. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (Hamburg, Germany) (CHI \u201923). Association for Computing Machinery, New York, NY, USA, Article 432, 17 pages. https://doi.org/10.1145/3544548.3580895"
+    },
+    {
+        "id": "BibPLXBIB0057",
+        "label": "[57]",
+        "value": "57",
+        "citation": "Jeremy Warner, Amy Pavel, Tonya Nguyen, Maneesh Agrawala, and Bjoern Hartmann. 2023. SlideSpecs: Automatic and Interactive Presentation Feedback Collation. In Proceedings of the 28th International Conference on Intelligent User Interfaces (Sydney, NSW, Australia) (IUI \u201923). Association for Computing Machinery, New York, NY, USA, 695\u2013709. https://doi.org/10.1145/3581641.3584035"
+    },
+    {
+        "id": "BibPLXBIB0058",
+        "label": "[58]",
+        "value": "58",
+        "citation": "Dominik Weber, Sven Mayer, Alexandra Voit, Rodrigo Ventura Fierro, and Niels Henze. 2016. Design Guidelines for Notifications on Smart TVs. In Proceedings of the ACM International Conference on Interactive Experiences for TV and Online Video (Chicago, Illinois, USA) (TVX \u201916). Association for Computing Machinery, New York, NY, USA, 13\u201324. https://doi.org/10.1145/2932206.2932212"
+    },
+    {
+        "id": "BibPLXBIB0059",
+        "label": "[59]",
+        "value": "59",
+        "citation": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, and Denny Zhou. 2023. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. arxiv:2201.11903 [cs.CL]"
+    },
+    {
+        "id": "BibPLXBIB0060",
+        "label": "[60]",
+        "value": "60",
+        "citation": "Dongwook Yoon, Nicholas Chen, Fran\u00e7ois Guimbreti\u00e8re, and Abigail Sellen. 2014. RichReview: Blending Ink, Speech, and Gesture to Support Collaborative Document Review. In Proceedings of the 27th Annual ACM Symposium on User Interface Software and Technology (Honolulu, Hawaii, USA) (UIST \u201914). Association for Computing Machinery, New York, NY, USA, 481\u2013490. https://doi.org/10.1145/2642918.2647390"
+    },
+    {
+        "id": "BibPLXBIB0061",
+        "label": "[61]",
+        "value": "61",
+        "citation": "Panayiotis Zaphiris, Mariya Ghiawadwala, and Shabana Mughal. 2005. Age-Centered Research-Based Web Design Guidelines. In CHI \u201905 Extended Abstracts on Human Factors in Computing Systems (Portland, OR, USA) (CHI EA \u201905). Association for Computing Machinery, New York, NY, USA, 1897\u20131900. https://doi.org/10.1145/1056808.1057050"
+    }
+]

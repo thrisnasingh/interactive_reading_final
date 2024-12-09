@@ -1,0 +1,36 @@
+{
+    "title": "Generating Automatic Feedback on UI Mockups with Large Language Models",
+    "authors": [
+        {
+            "givenName": "Peitong",
+            "surName": "Duan",
+            "institution": ", EECS, UC Berkeley, United States,",
+            "email": "peitongd@berkeley.edu"
+        },
+        {
+            "givenName": "Jeremy",
+            "surName": "Warner",
+            "institution": ", EECS, UC Berkeley, United States,",
+            "email": "jeremy.warner@berkeley.edu"
+        },
+        {
+            "givenName": "Yang",
+            "surName": "Li",
+            "institution": ", Google Research, United States,",
+            "email": "yangli@acm.org"
+        },
+        {
+            "givenName": "Bjoern",
+            "surName": "Hartmann",
+            "institution": ", EECS, UC Berkeley, United States,",
+            "email": "bjoern@eecs.berkeley.edu"
+        }
+    ],
+    "pubInfo": {
+        "DOI": "https://doi.org/10.1145/3613904.3642782",
+        "conference_info": "CHI '24: Proceedings of the CHI Conference on Human Factors in Computing Systems, Honolulu, HI, USA, May 2024"
+    },
+    "CCSConcepts": "Human-centered computing  Interactive systems and tools;",
+    "Keywords": "Large Language Models, Computational UI Design Tools",
+    "ACMReferenceFormat": "<div class=\"AcmReferenceFormat\">\n<p><small> <span style=\"font-weight:bold;\">ACM Reference Format:</span> <br/>Peitong Duan, Jeremy Warner, Yang Li, and Bjoern Hartmann. 2024. Generating Automatic Feedback on UI Mockups with Large Language Models. In <em>Proceedings of the CHI Conference on Human Factors in Computing Systems (CHI '24), May 11--16, 2024, Honolulu, HI, USA.</em> ACM, New York, NY, USA 20 Pages. <a class=\"link-inline force-break\" href=\"https://doi.org/10.1145/3613904.3642782\" target=\"_blank\">https://doi.org/10.1145/3613904.3642782</a></small></p>\n</div>"
+}

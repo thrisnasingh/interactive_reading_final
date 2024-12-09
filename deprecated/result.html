@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script src="{{ url_for('static', filename='trying.js') }}"></script>
+    <script>
+        async function loadContent() {
+            try {
+                const html = await generateHTML();
+                // Insert the generated HTML into the content div
+                document.getElementById('content').innerHTML = html;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('content').innerHTML = 'Error generating content';
+            }
+        }
+
+        // Load content when page loads
+        loadContent();
+    </script>
+</body>
+</html>
