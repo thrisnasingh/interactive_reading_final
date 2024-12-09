@@ -498,24 +498,77 @@ function renderSection(sectionKey, paragraphIndex = 0) {
             }
         }
 
-        // Add the paragraph content
+        // Add a flag to track if any highlights were found
+        let highlightsFound = false;
+        
         let paragraphText = currentParagraph.full_text;
         
-        // Make citations clickable by wrapping them in spans
-        paragraphText = paragraphText.replace(/\[([^\]]+)\]/g, (match, numbers) => {
-            // Split the numbers by comma and clean up whitespace
-            const citations = numbers.split(',').map(num => num.trim());
+        console.log('Highlights state:', {
+            highlightsOn,
+            hasAssociatedVisual: !!currentParagraph.associated_visual
+        });
+        
+        // If highlights are enabled, apply highlighting
+        if (highlightsOn && currentParagraph.associated_visual) {
+            const visual = visualElementsMap.get(currentParagraph.associated_visual);
+            console.log('Visual data:', {
+                visualFound: !!visual,
+                visualId: currentParagraph.associated_visual,
+                paragraphSentences: currentParagraph.sentences.map(s => s.text),
+                captionSentences: visual?.caption?.sentences?.map(s => s.text)
+            });
             
-            // Create individual clickable spans for each citation number
+            if (visual) {
+                const paragraphSentences = currentParagraph.sentences.map(s => s.text);
+                const captionSentences = visual.caption.sentences.map(s => s.text);
+                const similarityThreshold = 0.3;
+                
+                paragraphSentences.forEach((paragraphSentence, pIndex) => {
+                    captionSentences.forEach((captionSentence, cIndex) => {
+                        const similarity = calculateCosineSimilarity(paragraphSentence, captionSentence);
+                        
+                        if (similarity > similarityThreshold) {
+                            highlightsFound = true;  // Set flag when highlights are found
+                            const highlightId = `highlight-${pIndex}-${cIndex}`;
+                            
+                            // Add hoverable spans to paragraph
+                            const escapedParagraphSentence = paragraphSentence.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            const paragraphRegex = new RegExp(`(${escapedParagraphSentence})`, 'g');
+                            paragraphText = paragraphText.replace(
+                                paragraphRegex, 
+                                `<span class="hoverable-text" data-highlight-id="${highlightId}" 
+                                style="cursor: pointer;">$1</span>`
+                            );
+                        }
+                    });
+                });
+            }
+        }
+
+        // Update lightbulb button appearance based on highlights
+        const lightbulbBtn = document.getElementById('lightbulbBtn');
+        if (highlightsOn) {
+            if (highlightsFound) {
+                lightbulbBtn.style.backgroundColor = '#ffd700'; // Golden yellow when highlights found
+            } else {
+                lightbulbBtn.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.5)'; // Just the glow when no highlights found
+                lightbulbBtn.style.backgroundColor = 'white';
+            }
+        } else {
+            // Reset to default when highlights are off
+            lightbulbBtn.style.backgroundColor = 'white';
+            lightbulbBtn.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+        }
+
+        // Add citation and figure links (existing code)
+        paragraphText = paragraphText.replace(/\[([^\]]+)\]/g, (match, numbers) => {
+            const citations = numbers.split(',').map(num => num.trim());
             const linkedCitations = citations.map(num => 
                 `<span class="citation-link" data-citation-num="${num}" style="cursor: pointer; color: #0066cc;">${num}</span>`
             );
-
-            // Join them back together with commas and wrap in brackets
             return '[' + linkedCitations.join(', ') + ']';
         });
 
-        // Add figure reference handling
         paragraphText = paragraphText.replace(/Figure (\d+)/g, (match, figureNum) => {
             return `<span class="figure-link" data-figure-num="${figureNum}" style="cursor: pointer; color: #0066cc;">Figure ${figureNum}</span>`;
         });
@@ -648,6 +701,69 @@ function renderSection(sectionKey, paragraphIndex = 0) {
         contentHTML += '</div>';
         sectionDiv.innerHTML = contentHTML;
         contentSection.appendChild(sectionDiv);
+
+        // Get the newly created paragraph element after the content is added to DOM
+        const paragraphElement = sectionDiv.querySelector('.text-panel p');
+        const visualPanel = sectionDiv.querySelector('.visual-panel');
+
+        // After appending content, if highlights are on, also highlight the caption
+        if (highlightsOn && currentParagraph.associated_visual) {
+            const visual = visualElementsMap.get(currentParagraph.associated_visual);
+            if (visual) {
+                const captionElement = visualPanel?.querySelector('p[style*="font-style: italic"]');
+                if (captionElement) {
+                    let highlightedCaptionText = visual.caption.full_text;
+                    const paragraphSentences = currentParagraph.sentences.map(s => s.text);
+                    const captionSentences = visual.caption.sentences.map(s => s.text);
+                    const similarityThreshold = 0.3;
+
+                    paragraphSentences.forEach((paragraphSentence, pIndex) => {
+                        captionSentences.forEach((captionSentence, cIndex) => {
+                            const similarity = calculateCosineSimilarity(paragraphSentence, captionSentence);
+                            
+                            if (similarity > similarityThreshold) {
+                                const highlightId = `highlight-${pIndex}-${cIndex}`;
+                                const escapedCaptionSentence = captionSentence.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                                const captionRegex = new RegExp(`(${escapedCaptionSentence})`, 'g');
+                                highlightedCaptionText = highlightedCaptionText.replace(
+                                    captionRegex, 
+                                    `<span class="hoverable-text" data-highlight-id="${highlightId}" 
+                                    style="cursor: pointer;">$1</span>`
+                                );
+                            }
+                        });
+                    });
+                    
+                    captionElement.innerHTML = highlightedCaptionText;
+                }
+            }
+        }
+
+        // Add hover event listeners if highlights are on
+        if (highlightsOn) {
+            const hoverableElements = document.querySelectorAll('.hoverable-text');
+            hoverableElements.forEach(element => {
+                element.addEventListener('mouseenter', (e) => {
+                    const highlightId = e.target.dataset.highlightId;
+                    const correspondingElements = document.querySelectorAll(`[data-highlight-id="${highlightId}"]`);
+                    correspondingElements.forEach(el => {
+                        el.style.backgroundColor = 'yellow';
+                        el.style.transition = 'background-color 0.3s';
+                    });
+                });
+
+                element.addEventListener('mouseleave', (e) => {
+                    const highlightId = e.target.dataset.highlightId;
+                    const correspondingElements = document.querySelectorAll(`[data-highlight-id="${highlightId}"]`);
+                    correspondingElements.forEach(el => {
+                        el.style.backgroundColor = 'transparent';
+                    });
+                });
+            });
+        }
+
+        // Reattach other event listeners
+        attachEventListeners(paragraphElement);
     }
 
     // Add event listeners for citation links after rendering
@@ -1630,27 +1746,6 @@ function processVisualElements(content) {
 }
 
 
-// cool features to add?
-// Add dark mode toggle function
-function toggleDarkMode() {
-    const isDarkMode = document.body.classList.toggle('dark-mode');
-    
-    if (isDarkMode) {
-        // Dark mode styles
-        document.documentElement.style.setProperty('--bg-color', '#1a1a1a');
-        document.documentElement.style.setProperty('--text-color', '#ffffff');
-        document.documentElement.style.setProperty('--panel-bg', '#2d2d2d');
-        document.documentElement.style.setProperty('--hover-color', '#3d3d3d');
-        document.documentElement.style.setProperty('--border-color', '#404040');
-    } else {
-        // Light mode styles
-        document.documentElement.style.setProperty('--bg-color', '#ffffff');
-        document.documentElement.style.setProperty('--text-color', '#000000');
-        document.documentElement.style.setProperty('--panel-bg', '#f5f5f5');
-        document.documentElement.style.setProperty('--hover-color', '#e0e0e0');
-        document.documentElement.style.setProperty('--border-color', '#ddd');
-    }
-}
 
 // add a function that will check for similarities in a caption and in the paragraph shown and highlight both that are s
 // we will call this function when a user clicks the lightbulb button
@@ -1658,145 +1753,51 @@ function toggleDarkMode() {
 function toggleHighlights() {
     highlightsOn = !highlightsOn;
     
-    // Update lightbulb button appearance
-    const lightbulbBtn = document.getElementById('lightbulbBtn');
-    if (highlightsOn) {
-        lightbulbBtn.style.backgroundColor = '#ffd700'; // Golden yellow when active
-        lightbulbBtn.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.5)'; // Add glow effect
-    } else {
-        lightbulbBtn.style.backgroundColor = 'white'; // Reset to default
-        lightbulbBtn.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)'; // Reset to default shadow
-    }
-
-    // Get current paragraph based on state
+    // Get current paragraph to check for highlights
     const section = contentMap.get(`section_${currentSectionIndex}`);
     if (!section || !section.paragraphs[currentParagraphIndex]) return;
     
     const currentParagraph = section.paragraphs[currentParagraphIndex];
-    const associatedVisualId = currentParagraph.associated_visual;
-    
-    // If no associated visual, return
-    if (!associatedVisualId || !visualElementsMap.has(associatedVisualId)) return;
-    
-    const visual = visualElementsMap.get(associatedVisualId);
-    
-    // Get the visual panel and caption
-    const visualPanel = document.querySelector('.content-container .visual-panel');
-    const captionElement = visualPanel?.querySelector('p[style*="font-style: italic"]');
-    const paragraphElement = document.querySelector('.text-panel p');
-    
-    if (!visualPanel || !captionElement || !paragraphElement) return;
+    let highlightsFound = false;
 
-    // Check if highlights are already enabled
-    const highlightsEnabled = paragraphElement.classList.contains('highlights-enabled');
-    
-    if (highlightsEnabled) {
-        // Disable highlights
-        paragraphElement.classList.remove('highlights-enabled');
-        captionElement.classList.remove('highlights-enabled');
-        
-        // Reset to original text with citation and figure links
-        let originalText = currentParagraph.full_text;
-        originalText = originalText.replace(/\[([^\]]+)\]/g, (match, numbers) => {
-            const citations = numbers.split(',').map(num => num.trim());
-            const linkedCitations = citations.map(num => 
-                `<span class="citation-link" data-citation-num="${num}" style="cursor: pointer; color: #0066cc;">${num}</span>`
-            );
-            return '[' + linkedCitations.join(', ') + ']';
-        });
-        originalText = originalText.replace(/Figure (\d+)/g, (match, figureNum) => {
-            return `<span class="figure-link" data-figure-num="${figureNum}" style="cursor: pointer; color: #0066cc;">Figure ${figureNum}</span>`;
-        });
-        
-        paragraphElement.innerHTML = originalText;
-        captionElement.innerHTML = visual.caption.full_text;
-        
-        // Reattach event listeners
-        attachEventListeners(paragraphElement);
-        return;
+    // Check for highlights in current paragraph
+    if (highlightsOn && currentParagraph.associated_visual) {
+        const visual = visualElementsMap.get(currentParagraph.associated_visual);
+        if (visual) {
+            const paragraphSentences = currentParagraph.sentences.map(s => s.text);
+            const captionSentences = visual.caption.sentences.map(s => s.text);
+            const similarityThreshold = 0.3;
+            
+            // Check for any matching sentences
+            for (let paragraphSentence of paragraphSentences) {
+                for (let captionSentence of captionSentences) {
+                    if (calculateCosineSimilarity(paragraphSentence, captionSentence) > similarityThreshold) {
+                        highlightsFound = true;
+                        break;
+                    }
+                }
+                if (highlightsFound) break;
+            }
+        }
     }
 
-    // Enable highlights
-    paragraphElement.classList.add('highlights-enabled');
-    captionElement.classList.add('highlights-enabled');
+    // Update lightbulb button appearance
+    const lightbulbBtn = document.getElementById('lightbulbBtn');
+    if (highlightsOn) {
+        if (highlightsFound) {
+            lightbulbBtn.style.backgroundColor = '#ffd700'; // Golden yellow when highlights found
+        } else {
+            lightbulbBtn.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.5)'; // Just the glow when no highlights
+            lightbulbBtn.style.backgroundColor = 'white';
+        }
+    } else {
+        // Reset to default when highlights are off
+        lightbulbBtn.style.backgroundColor = 'white';
+        lightbulbBtn.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+    }
 
-    // Get sentences
-    const paragraphSentences = currentParagraph.sentences.map(s => s.text);
-    const captionSentences = visual.caption.sentences.map(s => s.text);
-    
-    // Create spans for each sentence
-    let highlightedParagraphText = currentParagraph.full_text;
-    let highlightedCaptionText = visual.caption.full_text;
-    const similarityThreshold = 0.3;
-    
-    paragraphSentences.forEach((paragraphSentence, pIndex) => {
-        captionSentences.forEach((captionSentence, cIndex) => {
-            const similarity = calculateCosineSimilarity(paragraphSentence, captionSentence);
-            
-            if (similarity > similarityThreshold) {
-                const highlightId = `highlight-${pIndex}-${cIndex}`;
-                
-                // Add hoverable spans to paragraph
-                const escapedParagraphSentence = paragraphSentence.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                const paragraphRegex = new RegExp(`(${escapedParagraphSentence})`, 'g');
-                highlightedParagraphText = highlightedParagraphText.replace(
-                    paragraphRegex, 
-                    `<span class="hoverable-text" data-highlight-id="${highlightId}" 
-                    style="cursor: pointer;">$1</span>`
-                );
-                
-                // Add hoverable spans to caption
-                const escapedCaptionSentence = captionSentence.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                const captionRegex = new RegExp(`(${escapedCaptionSentence})`, 'g');
-                highlightedCaptionText = highlightedCaptionText.replace(
-                    captionRegex, 
-                    `<span class="hoverable-text" data-highlight-id="${highlightId}" 
-                    style="cursor: pointer;">$1</span>`
-                );
-            }
-        });
-    });
-
-    // Add citation and figure links
-    highlightedParagraphText = highlightedParagraphText.replace(/\[([^\]]+)\]/g, (match, numbers) => {
-        const citations = numbers.split(',').map(num => num.trim());
-        const linkedCitations = citations.map(num => 
-            `<span class="citation-link" data-citation-num="${num}" style="cursor: pointer; color: #0066cc;">${num}</span>`
-        );
-        return '[' + linkedCitations.join(', ') + ']';
-    });
-
-    highlightedParagraphText = highlightedParagraphText.replace(/Figure (\d+)/g, (match, figureNum) => {
-        return `<span class="figure-link" data-figure-num="${figureNum}" style="cursor: pointer; color: #0066cc;">Figure ${figureNum}</span>`;
-    });
-
-    // Update the elements
-    paragraphElement.innerHTML = highlightedParagraphText;
-    captionElement.innerHTML = highlightedCaptionText;
-
-    // Add hover event listeners
-    const hoverableElements = document.querySelectorAll('.hoverable-text');
-    hoverableElements.forEach(element => {
-        element.addEventListener('mouseenter', (e) => {
-            const highlightId = e.target.dataset.highlightId;
-            const correspondingElements = document.querySelectorAll(`[data-highlight-id="${highlightId}"]`);
-            correspondingElements.forEach(el => {
-                el.style.backgroundColor = 'yellow';
-                el.style.transition = 'background-color 0.3s';
-            });
-        });
-
-        element.addEventListener('mouseleave', (e) => {
-            const highlightId = e.target.dataset.highlightId;
-            const correspondingElements = document.querySelectorAll(`[data-highlight-id="${highlightId}"]`);
-            correspondingElements.forEach(el => {
-                el.style.backgroundColor = 'transparent';
-            });
-        });
-    });
-
-    // Reattach other event listeners
-    attachEventListeners(paragraphElement);
+    // Force re-render of current section to apply/remove highlights
+    navigateToState(currentState, currentSectionIndex, currentParagraphIndex);
 }
 
 // Helper function to attach event listeners
@@ -1884,4 +1885,102 @@ function calculateCosineSimilarity(str1, str2) {
 
     // Calculate cosine similarity
     return dotProduct / (magnitude1 * magnitude2);
+}
+
+// cool features to add?
+// Add dark mode toggle function
+function toggleDarkMode() {
+    const isDarkMode = document.body.classList.toggle('dark-mode');
+    
+    if (isDarkMode) {
+        // Dark mode styles
+        document.documentElement.style.setProperty('--bg-color', '#1a1a1a');
+        document.documentElement.style.setProperty('--text-color', '#ffffff');
+        document.documentElement.style.setProperty('--panel-bg', '#2d2d2d');
+        document.documentElement.style.setProperty('--hover-color', '#3d3d3d');
+        document.documentElement.style.setProperty('--border-color', '#404040');
+    } else {
+        // Light mode styles
+        document.documentElement.style.setProperty('--bg-color', '#ffffff');
+        document.documentElement.style.setProperty('--text-color', '#000000');
+        document.documentElement.style.setProperty('--panel-bg', '#f5f5f5');
+        document.documentElement.style.setProperty('--hover-color', '#e0e0e0');
+        document.documentElement.style.setProperty('--border-color', '#ddd');
+    }
+}
+
+// might potential update Highlights function to use an OpenAI API call to match sentences
+async function updateHighlights() {
+    console.log('Starting updatedToggleHighlights');
+
+    // Get current section and paragraph
+    const section = contentMap.get(`section_${currentSectionIndex}`);
+    if (!section) {
+        console.log('No section found for index:', currentSectionIndex);
+        return;
+    }
+
+    const currentParagraph = section.paragraphs[currentParagraphIndex];
+    if (!currentParagraph) {
+        console.log('No paragraph found for index:', currentParagraphIndex);
+        return;
+    }
+
+    // Get associated visual if it exists
+    const visualId = currentParagraph.associated_visual;
+    if (!visualId || !visualElementsMap.has(visualId)) {
+        console.log('No associated visual found for paragraph');
+        return;
+    }
+
+    const visual = visualElementsMap.get(visualId);
+    
+    // Extract sentences from paragraph and caption
+    let paragraphSentences = currentParagraph.sentences.map((sentence, index) => ({
+        text: sentence.text.trim(),
+        sentIndex: index
+    }));
+
+    let captionSentences = [];
+    if (visual) {
+        captionSentences = visual.caption.full_text.match(/[^.!?]+[.!?]+/g) || [];
+        captionSentences = captionSentences.map((sentence, index) => ({
+            text: sentence.trim(),
+            capIndex: index
+        }));
+    }
+
+    console.log('Extracted paragraph sentences:', paragraphSentences);
+    console.log('Extracted caption sentences:', captionSentences);
+
+    // OpenAI API call
+    try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer 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` // You'll need to handle API key access
+            },
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo",
+                messages: [{
+                    role: "system",
+                    content: `Given two lists of sentences, match paragraph sentences with similar caption sentences. 
+                             Each paragraph sentence should match with at most one caption sentence, but caption sentences can match multiple paragraph sentences.
+                             If there are no matches, return an empty array.
+                             Return only a JSON array of matches, where each match has a 'paragraph' and 'caption' property containing the indices.`
+                }, {
+                    role: "user",
+                    content: `Paragraph sentences: ${JSON.stringify(paragraphSentences.map(s => s.text))}
+                             Caption sentences: ${JSON.stringify(captionSentences.map(s => s.text))}`
+                }],
+                temperature: 0.3
+            })
+        });
+
+        const data = await response.json();
+        const matches = JSON.parse(data.choices[0].message.content);
+} catch (error) {
+    console.error('Error during OpenAI API call:', error);
+}
 }

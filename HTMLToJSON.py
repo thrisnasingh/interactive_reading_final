@@ -79,12 +79,18 @@ def find_nearest_visual(element, all_visuals, text=None):
             current = current.previous_sibling
             continue
         if current.name in ['figure', 'table']:
-            return current.get('id')
+            visual_id = current.get('id')
+            # Skip if the ID contains an underscore
+            if visual_id and '_' not in visual_id:
+                return visual_id
         current = current.previous_sibling
     
     # If no previous visual found in siblings, find the most recent visual that appears before this element
     element_position = element.sourceline
-    previous_visuals = [v for v in all_visuals if v['sourceline'] < element_position]
+    # Filter out visuals with underscore in their ID
+    previous_visuals = [v for v in all_visuals 
+                       if v['sourceline'] < element_position 
+                       and '_' not in v['id']]
     if previous_visuals:
         return previous_visuals[-1]['id']
     return None
@@ -111,6 +117,11 @@ def process_abstract(abstract_div):
 def extract_visual_element(element, element_type):
     """Extract data for figure or table"""
     element_id = element.get('id', '')
+    
+    # Skip processing if ID contains underscore
+    if '_' in element_id:
+        return None
+        
     sourceline = element.sourceline
     
     if element_type == 'figure':
