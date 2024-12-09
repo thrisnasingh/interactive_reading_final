@@ -6,13 +6,13 @@ We first need to install selenium requests:
    pip install selenium requests
 
 We also need to install webdriver-manager. The intent of this command is to install ChromeDriver. 
-I had manually installed ChromeDriver in the past, but I updated the code so that this should work.
+I had manually installed ChromeDriver in the past, but I updated the code so that running the below in command line should work.
 If that doesn't work, you can manually install ChromeDriver here: https://googlechromelabs.github.io/chrome-for-testing/#stable. 
 If you install manually, make sure to install the version that matches your computer under Stable.
-    pip install webdriver-manager
+    pip3 install webdriver-manager
 
 This is a Flask application, so make sure you have Flask installed as well: 
-    pip install Flask
+    pip3 install Flask
 
 This program is run using Python3. To run the program, run the following command:
     python3 app.py
